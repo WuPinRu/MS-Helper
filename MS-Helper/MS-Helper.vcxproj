@@ -132,9 +132,13 @@
     <ClCompile Include="Utilities\Helper.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Utilities\BmpDrawer.h" />
     <ClInclude Include="Utilities\Helper.h" />
     <ClInclude Include="Utilities\KeyCode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MS-Helper.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
