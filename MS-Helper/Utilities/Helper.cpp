@@ -27,10 +27,33 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	// 抓取指定位置的顏色 (用來提供狀態判斷)
 	PrintColor(hContext, 1010, 480, 5, 50);
 #else
+	// 初始設定
+	int nCurrentTimes = 0;
+	int nMaxTimes = 4000;
+	cout << "Current Times: ";
+	cin >> nCurrentTimes;
 	// 調整到最前頁
 	SetForegroundWindow(hWindow);
 	// 正式任務
-	//TODO: 客製化要做的事
+	while (nCurrentTimes < nMaxTimes)
+	{
+		Key(CTRL);
+		if (GetPixel(hContext, 1010, 480) < 16000000)
+		{
+			nCurrentTimes++;
+			cout << "Get Suger! " << nCurrentTimes << "/" << nMaxTimes << endl;
+		}
+		else
+		{
+			Key(DOWN);
+			Key(DOWN);
+			Key(CTRL);
+			Key(CTRL);
+			Key(DOWN);
+			Key(CTRL);
+			Key(CTRL);
+		}
+	}
 #endif
 }
 
