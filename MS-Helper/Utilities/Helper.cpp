@@ -25,7 +25,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	cout << "Process start!" << endl;
 #if PrintColorMode
 	// Print the color value of the specified pixel. (for status judgment)
-	PrintColor(hContext, 1010, 480, 5, 50);
+	PrintColor(hContext, 720, 640, 3, 30);
 #else
 	// Input the current collect times to initial data.
 	int nCurrentTimes = 0;
@@ -38,7 +38,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	while (nCurrentTimes < nMaxTimes)
 	{
 		Key(CTRL);
-		if (GetPixel(hContext, 1010, 480) < 16000000)
+		if (GetPixel(hContext, 720, 640) != 65484)
 		{
 			nCurrentTimes++;
 			cout << "Get Suger! " << nCurrentTimes << "/" << nMaxTimes << endl;
