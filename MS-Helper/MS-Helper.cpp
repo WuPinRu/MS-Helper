@@ -3,25 +3,29 @@
 
 int main()
 {
-	// 設定視窗標題
-	system("title 楓之谷小幫手");
-	// 抓取視窗
+	// Set up window's title.
+	system("title MS Helper");
+
+	// Get the target window.
 	HWND hWindow = FindWindow(0, L"MapleStory");
 	if (hWindow == NULL)
 	{
 		cout << "Window not found." << endl;
 		return 0;
 	}
-	// 取得視窗繪圖內容
+
+	// Get the target graphic context.
 	HDC hContext = GetDC(hWindow);
 	if (hContext == NULL)
 	{
 		cout << "Context not found." << endl;
 		return 0;
 	}
-	// 產生圖片
+
+	// Generate the BMP picture file.
 	//BmpDrawer::Hdc2Bmp("data.bmp", hContext, 1920, 1080);
-	// 執行任務
+
+	// Start the process.
 	Helper::Processing(hWindow, hContext);
 	return 0;
 }
