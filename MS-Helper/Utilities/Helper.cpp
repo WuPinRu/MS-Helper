@@ -12,7 +12,7 @@ void Helper::PrintColor(HDC hContext, int nPixelX, int nPixelY, float fDuration,
 
 void Helper::Processing(HWND hWindow, HDC hContext)
 {
-	// 緩衝預備
+	// Buffer for preparation.
 	system("pause");
 	int nBuffer = 3;
 	for (int b = nBuffer; b > 0; --b)
@@ -24,17 +24,17 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	system("cls");
 	cout << "Process start!" << endl;
 #if PrintColorMode
-	// 抓取指定位置的顏色 (用來提供狀態判斷)
+	// Print the color value of the specified pixel. (for status judgment)
 	PrintColor(hContext, 1010, 480, 5, 50);
 #else
-	// 初始設定
+	// Input the current collect times to initial data.
 	int nCurrentTimes = 0;
 	int nMaxTimes = 4000;
 	cout << "Current Times: ";
 	cin >> nCurrentTimes;
-	// 調整到最前頁
+	// Set the window to the top of the stack.
 	SetForegroundWindow(hWindow);
-	// 正式任務
+	// Start button wizard!
 	while (nCurrentTimes < nMaxTimes)
 	{
 		Key(CTRL);
@@ -57,7 +57,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 #endif
 }
 
-void Helper::Key(int nKeyCode)			// 按下 & 彈起
+void Helper::Key(int nKeyCode)			// Press & Release.
 {
 	//cout << "Key press: " << nKeyCode << endl;
 	keybd_event(nKeyCode, MapVirtualKey(nKeyCode, 0), KEYEVENTF_EXTENDEDKEY | 0, 0);
@@ -65,14 +65,14 @@ void Helper::Key(int nKeyCode)			// 按下 & 彈起
 	Sleep(KeyDelayMs);
 }
 
-void Helper::KeyHold(int nKeyCode)		// 按住不放
+void Helper::KeyHold(int nKeyCode)		// Hold the key.
 {
 	//cout << "Key hold: " << nKeyCode << endl;
 	keybd_event(nKeyCode, MapVirtualKey(nKeyCode, 0), KEYEVENTF_EXTENDEDKEY | 0, 0);
 	Sleep(KeyDelayMs);
 }
 
-void Helper::KeyRelease(int nKeyCode)	// 釋放按鍵
+void Helper::KeyRelease(int nKeyCode)	// Release the key.
 {
 	//cout << "Key release: " << nKeyCode << endl;
 	keybd_event(nKeyCode, MapVirtualKey(nKeyCode, 0), KEYEVENTF_EXTENDEDKEY | KEYEVENTF_KEYUP, 0);
