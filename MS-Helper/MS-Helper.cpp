@@ -23,7 +23,7 @@ int main()
 	}
 
 	// Generate the BMP picture file.
-	//BmpDrawer::Hdc2Bmp("data.bmp", hContext, 1920, 1080);
+	//BmpDrawer::Hdc2Bmp("data.bmp", hContext, 1280, 720);
 
 	// Start the process.
 	Helper::Processing(hWindow, hContext);

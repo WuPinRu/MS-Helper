@@ -25,7 +25,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	cout << "Process start!" << endl;
 #if PrintColorMode
 	// Print the color value of the specified pixel. (as a state checkpoint)
-	PrintColor(hContext, 875, 520, 3, 30);
+	PrintColor(hContext, 465, 465, 3, 30);
 #else
 	// Input the current collect times to initial data.
 	int nCurrentTimes = 0;
@@ -39,7 +39,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	{
 		Key(CTRL);
 		Sleep(1000);	// Wait for gamania window popup delay.
-		if (GetPixel(hContext, 790, 645) == 56746 && GetPixel(hContext, 875, 520) == 255)
+		if (GetPixel(hContext, 465, 465) == 56746 && GetPixel(hContext, 555, 345) == 255)
 		{
 			Key(DOWN);
 			Key(DOWN);
