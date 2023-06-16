@@ -4,7 +4,7 @@
 int main()
 {
 	// Set up window's title.
-	system("title MS Helper");
+	system("title MS Helper - Collect Star Candy");
 
 	// Get the target window.
 	HWND hWindow = FindWindow(0, L"MapleStory");
