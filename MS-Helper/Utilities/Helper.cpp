@@ -25,7 +25,7 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	cout << "Process start!" << endl;
 #if PrintColorMode
 	// Print the color value of the specified pixel. (as a state checkpoint)
-	PrintColor(hContext, 465, 465, 3, 30);
+	PrintColor(hContext, 700, 470, 3, 30);
 #else
 	// Input the current collect times to initial data.
 	int nCurrentTimes = 0;
@@ -35,25 +35,49 @@ void Helper::Processing(HWND hWindow, HDC hContext)
 	// Set the window to the top of the stack.
 	SetForegroundWindow(hWindow);
 	// Start button wizard!
+	bool isCollected = false;
 	while (nCurrentTimes < nMaxTimes)
 	{
 		Key(CTRL);
-		Sleep(1000);	// Wait for gamania window popup delay.
-		if (GetPixel(hContext, 465, 465) == 56746 && GetPixel(hContext, 555, 345) == 255)
+		if (GetPixel(hContext, 465, 465) == 56746)	// Not Pass
 		{
+			// Take off ant costume.
 			Key(DOWN);
 			Key(DOWN);
 			Key(CTRL);
+			// Put on ant costume.
 			Key(CTRL);
 			Key(DOWN);
 			Key(CTRL);
 			Key(CTRL);
+			isCollected = false;
 		}
-		else
+		else	// Pass
 		{
-			nCurrentTimes++;
-			cout << "Get Suger! " << nCurrentTimes << "/" << nMaxTimes << endl;
+			if (!isCollected)	// Prevent double counting.
+			{
+				nCurrentTimes++;
+				cout << "Get Suger! " << nCurrentTimes << "/" << nMaxTimes << endl;
+				isCollected = true;
+			}
 		}
+
+		// Check if the process is out of order.
+		if (GetPixel(hContext, 700, 470) == 61115)
+		{
+			cout << "Error Occured! Reset the process! (Count - 1)" << endl;
+			nCurrentTimes--;
+			cout << "Set count: " << nCurrentTimes << endl;
+			// Close incorrect window.
+			Key(ESC);
+			// Put on ant costume again.
+			Key(CTRL);
+			Key(DOWN);
+			Key(CTRL);
+			Key(CTRL);
+			isCollected = false;
+		}
+		Sleep(200);
 	}
 #endif
 }
